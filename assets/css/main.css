@@ -3835,6 +3835,7 @@ input, select, textarea {
 		.banner.style3 .content {
 			width: 31.5rem;
 			max-width: 100%;
+			margin: 0 3.5rem 2rem 5;
 		}
 
 		.banner.style3 .image {
@@ -3870,7 +3871,7 @@ input, select, textarea {
 		@media screen and (max-width: 1680px) {
 
 			.banner.style3 {
-				padding: 5rem 5rem 3rem 5rem ;
+				padding: 5rem 5rem 10rem 5rem ;
 			}
 
 		}
@@ -3909,7 +3910,7 @@ input, select, textarea {
 				.banner.style3 .image {
 					width: 15.75rem;
 					height: 15.75rem;
-					margin: 0 2rem 2rem 0;
+					margin:  2rem 2rem 0;
 				}
 
 		}
@@ -8559,7 +8560,9 @@ input, select, textarea {
 			}
 
 		#wrapper > .color1 {
-			background-color: #30363d;
+		  background-image: linear-gradient(90deg, #01273A 0%,#1672A1 100%);
+		  
+			background-color: #01273A;
 		}
 
 		#wrapper > .color2 {
