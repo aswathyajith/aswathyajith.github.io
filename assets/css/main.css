@@ -348,6 +348,61 @@ input, select, textarea {
 		border-bottom-color: rgba(0, 0, 0, 0.2);
 	}
 
+.publications {
+    margin-top: -1.5em;
+	align-items: center;
+	margin-left: -10em;
+	width: 60vw;
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	position: relative;
+}
+
+.pub-entry {
+    display: flex;
+    /* gap: 1em; */
+    margin-left: 1em;
+    position: relative;
+    width: 100%;
+	/* min-height: 20vh; */
+	height: auto;
+	padding-top: 50px;
+}
+
+.venue-container {
+	width: 250px;
+	display: flex;
+}
+
+.venue {
+    flex: 0 0 auto;
+    font-weight: bold;
+	/* width: calc(100% - 100em); */
+    padding: 0.3em 0.8em;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9em;
+    white-space: nowrap;  /* Prevents text wrapping */
+    line-height: 1;       /* Removes extra vertical space */
+    height: fit-content;  /* Ensures height matches content */
+	
+}
+
+.paper-details {
+	/* position: relative; */
+	left: 17em;
+    flex: 1;
+	width: calc(100% - 14em);
+	margin-top: -0.25em;
+	height: auto;
+	/* padding-top: 10px; */
+	/* height: 20%; */
+	/* margin-left: 2em;  /* Added extra left margin for paper details */
+}
+
 /* Row */
 
 	.row {
