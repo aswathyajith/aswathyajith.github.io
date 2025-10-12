@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting in Sight, Words, and Thought</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #0066cc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        article {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .meta {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        time {
+            font-weight: 500;
+        }
+
+        article p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        article h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        article a {
+            color: #0066cc;
+            text-decoration: none;
+            border-bottom: 1px solid #0066cc;
+        }
+
+        article a:hover {
+            color: #0052a3;
+            border-bottom-color: #0052a3;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .taxonomy {
+            width: 100%;
+            height: auto;
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .image-block {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2rem 0;
+            align-items: center;
+        }
+
+        .image-block .image-container {
+            width: 100%;
+            text-align: center;
+        }
+
+        .image-block img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .image-block.narrow .image-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .image-block .caption {
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .image-block {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        blockquote {
+            border-left: 4px solid #0066cc;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            color: #555;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            article {
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                margin: 1.5rem auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="index.html">Blog</a>
+        <a href="../about.html">About</a>
+    </nav>
+
+    <div class="container">
+        <article>
+            <h1>Counting in Sight, Word, and Thought </h1>
+            <div class="subtitle">
+                <p>A Study of Count Alignment in Multi-modal Text-Vision Models</p>
+            </div>
+            <div class="meta">
+                <time datetime="2024-10-09">October 9, 2025</time>
+            </div>
+            <h2>Abstract</h2>
+            <p>
+                Multi-modal text-vision models have shown remarkable capabilities in generating and editing images with text prompts. However, their ability to process and generate numerical data is still under-explored. This post aims to explore the counting abilities of multi-modal text-vision models. 
+            </p>
+            <h2>Introduction</h2>
+            <p>
+                In this post, I will do a deep dive into the generative and counting abilities of multi-modal text-vision models. 
+            </p>
+             <!-- Two-image block -->
+             <div class="image-block narrow">
+                 <div class="image-container">
+                     <img src="figs/orange_3.png" alt="3 oranges.">
+                     <p class="caption"><strong>Figure 1a:</strong> Image generated by OmniGen2 for the prompt <strong>3 oranges.</strong></p>
+                 </div>
+                 <div class="image-container">
+                     <img src="figs/sheep_3.png" alt="3 sheep.">
+                     <p class="caption"><strong>Figure 1b:</strong> Image generated by OmniGen2 for the prompt <strong>3 sheep.</strong></p>
+                 </div>
+             </div>
+            
+            <p>
+            To analyze the performance of models on this task, we first define a taxonomy categorizing the different countable noun forms based on morphological and semantic features.
+            </p>
+            <!-- Two-image block -->
+            <div class="image-block">
+                <div class="image-container">
+                    <img src="figs/morphological_taxonomy.png" alt="Morphological taxonomy.">
+                    <p class="caption"><strong>Figure 2a:</strong> Taxonomy of countable noun forms based on morphological features.</p>
+                </div>
+                <div class="image-container">
+                    <img src="figs/semantic_taxonomy.png" alt="Semantic taxonomy.">
+                    <p class="caption"><strong>Figure 2b:</strong> Taxonomy of countable noun forms based on semantic features (under construction).</p>
+                </div>
+            </div>
+            
+
+            <h2>Experimental Setup</h2>
+
+            <p>
+                We examine the following aspects to understand the cognition of numerical values in multi-modal text-vision models: 
+                <ol>
+                    <li>Counting: We prompt models to count the number of objects in a synthetically created image. </li>
+                    <li>Generation: We prompt models to generate an image with a specified number of objects. </li>
+                    <li>Consistency: We prompt models to generate the same number of objects in an image. </li>
+                    <li>Probing: We train linear probes on model activations across different layers and test their ability to predict the number of objects in an image. </li>
+                </ol>
+            </p>
+        </article>
+    </div>
+</body>
+</html>
