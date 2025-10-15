@@ -145,10 +145,70 @@
             font-size: 0.85rem;
         }
 
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 1rem;
+            transform: scale(0.65);
+            transform-origin: center;
+        }
+
+        .image-grid .image-container:first-child {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .image-grid .image-container:nth-child(2) {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .image-grid .image-container:nth-child(3) {
+            grid-column: 1 / -1;
+            grid-row: 2;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .image-grid .caption {
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .image-block {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                gap: 1rem;
+            }
+
+            .image-grid .image-container:first-child {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .image-grid .image-container:nth-child(2) {
+                grid-column: 1;
+                grid-row: 2;
+            }
+
+            .image-grid .image-container:nth-child(3) {
+                grid-column: 1;
+                grid-row: 3;
             }
         }
 
@@ -204,7 +264,8 @@
             </p>
             <h2>Introduction</h2>
             <p>
-                In this post, I will do a deep dive into the generative and counting abilities of multi-modal text-vision models. 
+                <i>Give-N tasks</i> and <i>How-Many tasks</i> are commonly used conceptual measures in cognitive science to evaluate cardinality understanding in children. The <i>How-Many task</i> tests an understanding of the ability to count the number of objects in a given set. In the <i>Give-N task</i>, children are presented with a pile of items and asked to construct a subset of objects of a specific size. <i>Give-N tasks</i> are considered to be more difficult and a more comprehensive measure of cardinality understanding. However, despite the performance differences across the two tasks, covariance between them can be used to test whether they measure the same construct [<a href="https://www.sciencedirect.com/science/article/pii/S0885200623001151/">O'Rear et al., 2023</a>].
+                In this post, I will do a deep dive into the performance of multi-modal text-vision models on these tasks. 
             </p>
              <!-- Two-image block -->
              <div class="image-block narrow">
@@ -234,17 +295,49 @@
             </div>
             
 
+            <h2>Related Work</h2>
+
+            <p>
+                Recent work evaluating generative models for counting skills have found that vision-text models possess <i>some</i> ability to generate images with the correct number of objects (<i>Give-n</i> task), but can struggle when presented with unusual descriptive modifiers [<a href="https://cocosci.princeton.edu/papers/rane2024count.pdf">Rane et al. (2024)</a>]. Further, their performance degrades rapidly for cardinalities greater than 5. Other works have investigated the ability of vision-text models to count objects in the wild [<a href="https://arxiv.org/pdf/1604.03505">Ma et al. (2025)</a>, <a href="https://arxiv.org/pdf/1810.12440">Acharya et al. (2024)</a>] (<i>How Many?</i> task).
+            </p>
+
             <h2>Experimental Setup</h2>
 
             <p>
-                We examine the following aspects to understand the cognition of numerical values in multi-modal text-vision models: 
+                We evaluate the OmniGen2 model on the following tasks to understand numerical cognition of simple countable noun entities in multi-modal text-vision models: 
                 <ol>
-                    <li>Counting: We prompt models to count the number of objects in a synthetically created image. </li>
-                    <li>Generation: We prompt models to generate an image with a specified number of objects. </li>
-                    <li>Consistency: We prompt models to generate the same number of objects in an image. </li>
-                    <li>Probing: We train linear probes on model activations across different layers and test their ability to predict the number of objects in an image. </li>
+                    <li>
+                        <i>Give-n</i> task: We prompt models with a phrase or instruction to generate an image of a pre-specified count of a countable noun entity . </li>
+                    <li>
+                        <i>How-Many</i> task: Given a synthetically generated image with single abstract entities, we prompt models to output the cardinality of the entity set in the given image. </li>
                 </ol>
+
             </p>
+
+            <h2>Results</h2>
+            <p>
+                As observed by [<a href="https://cocosci.princeton.edu/papers/rane2024count.pdf"></a>Rane et al. (2024)</a>], we find that models exhibit moderate success in generating images of entities with lower cardinalities (1-3). However, the performance degrades rapidly as we increase <i>n</i> to 4 or greater. The following figures show the accuracies, error rates, and distribution counts on the Give-n task. We make the following observations:
+                <ol>
+                    <li>With higher cardinalities, the model tends to over-count than under-count (i.e., generate more objects than the input prompt count).</li>
+                    <li>A bias towards generating objects of counts 9.</li>
+                    <li>Certain entities are more difficult to count than others (e.g. oranges).</li>
+                </ol>
+
+            </p>
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="figs/acc.png" alt="Accuracy of model-generated counts.">
+                        <p class="caption"><strong>Figure 3c:</strong> Distribution of model-generated counts on the Give-n task.</p>
+                    </div>
+                <div class="image-container">
+                    <img src="figs/error.png" alt="Error rates on Give-n task.">
+                    <p class="caption"><strong>Figure 3a:</strong> Differences between the average model generated count and the input prompt count on the Give-n task.</p>
+                </div>
+                <div class="image-container">
+                    <img src="figs/ridge_plot.png" alt="Give-n count Distribution.">
+                    <p class="caption"><strong>Figure 3b:</strong> Distribution of model-generated counts on the Give-n task.</p>
+                </div>
+            </div>
         </article>
     </div>
 </body>
