@@ -83,6 +83,19 @@
             color: #2a2a2a;
         }
 
+        /* Make ordered lists fit narrower sections */
+        article ol {
+            max-width: 900px; /* narrower than article width */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.25rem; /* keep numbering readable */
+            padding-right: 1.25rem;
+        }
+
+        article ol li {
+            margin-bottom: 0.5rem;
+        }
+
         article a {
             color: #0066cc;
             text-decoration: none;
@@ -150,8 +163,10 @@
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto auto;
             gap: 1rem;
-            transform: scale(0.65);
+            transform: scale(0.6);
             transform-origin: center;
+            margin-top: -13rem;
+            margin-bottom: -10rem;
         }
 
         .image-grid .image-container:first-child {
@@ -307,7 +322,7 @@
                 We evaluate the OmniGen2 model on the following tasks to understand numerical cognition of simple countable noun entities in multi-modal text-vision models: 
                 <ol>
                     <li>
-                        <i>Give-n</i> task: We prompt models with a phrase or instruction to generate an image of a pre-specified count of a countable noun entity . </li>
+                        <i>Give-n</i> task: We prompt models with a phrase or instruction to generate an image of a countable noun entity with a pre-specified cardinality. </li>
                     <li>
                         <i>How-Many</i> task: Given a synthetically generated image with single abstract entities, we prompt models to output the cardinality of the entity set in the given image. </li>
                 </ol>
@@ -316,28 +331,28 @@
 
             <h2>Results</h2>
             <p>
-                As observed by [<a href="https://cocosci.princeton.edu/papers/rane2024count.pdf"></a>Rane et al. (2024)</a>], we find that models exhibit moderate success in generating images of entities with lower cardinalities (1-3). However, the performance degrades rapidly as we increase <i>n</i> to 4 or greater. The following figures show the accuracies, error rates, and distribution counts on the Give-n task. We make the following observations:
-                <ol>
-                    <li>With higher cardinalities, the model tends to over-count than under-count (i.e., generate more objects than the input prompt count).</li>
-                    <li>A bias towards generating objects of counts 9.</li>
-                    <li>Certain entities are more difficult to count than others (e.g. oranges).</li>
-                </ol>
-
-            </p>
+                As observed by [<a href="https://cocosci.princeton.edu/papers/rane2024count.pdf">Rane et al. (2024)</a>], we find that models exhibit moderate success in generating images of entities with lower cardinalities (1-3). However, the performance degrades rapidly as we increase <i>n</i> to 4 or greater. The following figures show the accuracies, error rates, and distribution counts on the Give-n task. We make the following key observations:
             <div class="image-grid">
                 <div class="image-container">
                     <img src="figs/acc.png" alt="Accuracy of model-generated counts.">
-                        <p class="caption"><strong>Figure 3c:</strong> Distribution of model-generated counts on the Give-n task.</p>
+                        <p class="caption"><strong>Figure 3a:</strong> Heatmap of exact match (EM) accuracy of model-generated counts on the Give-n task.</p>
                     </div>
                 <div class="image-container">
                     <img src="figs/error.png" alt="Error rates on Give-n task.">
-                    <p class="caption"><strong>Figure 3a:</strong> Differences between the average model generated count and the input prompt count on the Give-n task.</p>
+                    <p class="caption"><strong>Figure 3b:</strong> Heatmap of error rates between the average model generated count and the input prompt count on the Give-n task.</p>
                 </div>
                 <div class="image-container">
                     <img src="figs/ridge_plot.png" alt="Give-n count Distribution.">
-                    <p class="caption"><strong>Figure 3b:</strong> Distribution of model-generated counts on the Give-n task.</p>
+                    <p class="caption"><strong>Figure 3c:</strong> Distribution of model-generated counts on the Give-n task.</p>
                 </div>
             </div>
+            <ol>
+                <li>The model has a tendency to over-produce than under-produce objects (i.e., generate more objects than what is asked for in the input prompt).</li>
+                <li>A bias towards generating objects in counts of 9 (i.e., the model tends to generate 9 objects when the input prompt count is 10).</li>
+                <li>Polysemous entities (words that are associated with multiple visual concepts like "fruits", "color", but stemming from the same origin) are harder to generate in accurate numbers than others. For example, the model struggles to generate accurate counts of "peach" and "orange" (which can be both a fruit and a color), but is relatively successful at generating accurate counts of "sheep" and "goats".</li>
+                <li>The bias towards producing objects in counts of 9 is amplified in entities that are more difficult to count (i.e. we find that the model significantly produced more images with 9 counts for entities like "orange" and "peach" in which their performance was poorest).</li>
+            </ol>
+            </p>
         </article>
     </div>
 </body>
