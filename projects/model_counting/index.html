@@ -210,6 +210,22 @@
             text-align: center;
         }
 
+        /* Three-image horizontal grid variant (does not affect other grids) */
+        .image-grid.three-wide {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 1rem;
+            transform: none;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+        .image-grid.three-wide .image-container {
+            grid-column: auto;
+            grid-row: auto;
+            max-width: 100%;
+            margin: 0;
+        }
+
         @media (max-width: 768px) {
             .image-block {
                 flex-direction: column;
@@ -401,8 +417,30 @@
                 <li>Polysemous entities (words that are associated with multiple visual concepts like "fruits", "color", but stemming from the same origin) are harder to generate in accurate counts than others. For example, the model struggles to generate accurate counts of "peach" and "orange" (which can be both a fruit and a color), but is relatively successful at generating a given number of "sheep" and "goats".</li>
                 <li>The bias towards producing objects in counts of 9 is amplified in entities that are more difficult to count (i.e. we find that the model significantly produced more images with 9 counts for entities like "orange" and "peach" in which their performance was poorest).</li>
             </ol>
-            </p>
 
+                <h3>4.1 Homonymous Entities</h3>
+                <p>
+                    We find that the model struggles to generate accurate counts of homonymous entities (i.e. entities that are associated with multiple visual concepts like "fruits", "color", but stemming from the same origin). For example, the model struggles to generate accurate counts of "peach" and "orange" (which can be both a fruit and a color), but is relatively successful at generating a given number of "sheep" and "goats". We hypothesize that this could be due to the model's inability to disambiguate between the two entities.
+
+                    <div class="image-grid three-wide">
+                        <div class="image-container">
+                            <img src="figs/homonyms/gen_count.png" alt="3 peaches.">
+                            <p class="caption"><strong>Figure 4a:</strong>Generated counts of homonymous entities.</p>
+                        </div>
+                        <div class="image-container">
+                            <img src="figs/homonyms/acc.png" alt="3 oranges.">
+                            <p class="caption"><strong>Figure 4b:</strong> Exact match accuracy of model-generated counts of homonymous entities.</p>
+                        </div>
+            
+                        <div class="image-container">
+                            <img src="figs/homonyms/count_diff.png" alt="3 sheep.">
+                            <p class="caption"><strong>Figure 4c:</strong> Error rates between the average model generated count and the input prompt count of homonymous entities.</p>
+                        </div>
+                    </div>
+                    other homonyms to test: bat, coin, duck, spring, glass, bow, book, box, fly, boot
+                </p>
+            </p>
+            
             <h2>5 Conclusion</h2>
         </article>
     </div>
